@@ -13,6 +13,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
     <style>
+      /* Your existing CSS styles here */
       :root {
         --primary-color: #6c63ff;
         --secondary-color: #4d44db;
@@ -129,6 +130,13 @@
       .form-control.is-invalid {
         border-color: #e53e3e;
       }
+
+      /* Additional style for download link */
+      .download-link {
+        display: none;
+        margin-top: 20px;
+        text-align: center;
+      }
     </style>
   </head>
   <body>
@@ -240,6 +248,16 @@
                   </button>
                 </div>
               </form>
+
+              <!-- Download link that will appear after submission -->
+              <div id="downloadLink" class="download-link">
+                <a href="#" id="jsonDownload" class="btn btn-success">
+                  <i class="fas fa-download me-2"></i>Download JSON File
+                </a>
+                <p class="mt-2 text-muted">
+                  Your registration data is ready to download.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -247,6 +265,49 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+    <script>
+      document
+        .getElementById("registrationForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Get form values
+          const formData = {
+            firstName: document.getElementById("firstName").value,
+            middleName: document.getElementById("middleName").value,
+            lastName: document.getElementById("lastName").value,
+            email: document.getElementById("email").value,
+            address: document.getElementById("address").value,
+            phone: "+880" + document.getElementById("phone").value,
+            registrationDate: new Date().toISOString(),
+          };
+
+          // Convert to JSON
+          const jsonData = JSON.stringify(formData, null, 2);
+
+          // Log to console
+          console.log("Registration data:", jsonData);
+
+          // Create download link
+          const blob = new Blob([jsonData], { type: "application/json" });
+          const url = URL.createObjectURL(blob);
+          const downloadLink = document.getElementById("jsonDownload");
+          downloadLink.href = url;
+          downloadLink.download = "registration_data.json";
+
+          // Show download link
+          document.getElementById("downloadLink").style.display = "block";
+
+          // Optional: Scroll to download link
+          document
+            .getElementById("downloadLink")
+            .scrollIntoView({ behavior: "smooth" });
+
+          // Show success message
+          alert(
+            "Registration successful! You can now download your data as JSON."
+          );
+        });
+    </script>
   </body>
 </html>
