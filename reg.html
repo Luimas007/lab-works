@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ultra Registration</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary: #8b5cf6;
+        --primary-dark: #7c3aed;
+        --accent: #f59e0b;
+        --success: #10b981;
+      }
+
+      body {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        min-height: 100vh;
+        font-family: "Inter", sans-serif;
+      }
+
+      .registration-card {
+        width: 100%;
+        max-width: 600px;
+        margin: 2rem auto;
+      }
+
+      .header-gradient {
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--primary-dark) 100%
+        );
+      }
+
+      .glow-effect {
+        box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+      }
+
+      .input-focus-effect:focus {
+        box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.3);
+        border-color: var(--primary);
+      }
+
+      .success-message {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.3s ease;
+      }
+
+      .success-message.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Custom select dropdown */
+      .custom-select {
+        position: relative;
+        min-width: 180px;
+      }
+
+      .custom-select select {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 100%;
+        cursor: pointer;
+      }
+
+      .custom-select::after {
+        content: "▼";
+        font-size: 0.8rem;
+        top: 50%;
+        right: 1rem;
+        transform: translateY(-50%);
+        position: absolute;
+        color: #94a3b8;
+        pointer-events: none;
+      }
+
+      /* Make form inputs more substantial */
+      .form-input {
+        padding: 1rem;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        transition: all 0.2s;
+      }
+
+      /* Unique floating label effect */
+      .input-group {
+        position: relative;
+        margin-top: 1.5rem;
+      }
+
+      .input-label {
+        position: absolute;
+        top: -0.75rem;
+        left: 0.75rem;
+        background: #1e293b;
+        padding: 0 0.5rem;
+        font-size: 0.75rem;
+        color: #94a3b8;
+        z-index: 10;
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #1e293b;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #4b5563;
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #6b7280;
+      }
+    </style>
+  </head>
+  <body class="text-gray-100 flex items-center justify-center p-4">
+    <div class="registration-card">
+      <div
+        class="bg-slate-800 rounded-2xl overflow-hidden shadow-2xl border border-slate-700"
+      >
+        <!-- Header -->
+        <div class="header-gradient p-8 text-center relative overflow-hidden">
+          <div
+            class="absolute inset-0 opacity-10"
+            style="
+              background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            "
+          ></div>
+          <div
+            class="w-24 h-24 bg-indigo-500 rounded-full flex items-center justify-center mx-auto mb-6 glow-effect relative z-10"
+          >
+            <i class="fas fa-user-plus text-4xl text-white"></i>
+          </div>
+          <h1 class="text-4xl font-bold relative z-10">Join Our Community</h1>
+          <p class="text-indigo-100 mt-3 text-lg relative z-10">
+            Create your account in seconds
+          </p>
+        </div>
+
+        <!-- Form -->
+        <div class="p-8">
+          <form id="registrationForm" class="space-y-6">
+            <!-- Name Fields -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+              <div class="input-group">
+                <span class="input-label">First Name*</span>
+                <input
+                  type="text"
+                  id="firstName"
+                  class="w-full bg-slate-700 border border-slate-600 form-input input-focus-effect text-white placeholder-slate-400"
+                  placeholder="John"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <span class="input-label">Middle Name</span>
+                <input
+                  type="text"
+                  id="middleName"
+                  class="w-full bg-slate-700 border border-slate-600 form-input input-focus-effect text-white placeholder-slate-400"
+                  placeholder="(Optional)"
+                />
+              </div>
+              <div class="input-group">
+                <span class="input-label">Last Name*</span>
+                <input
+                  type="text"
+                  id="lastName"
+                  class="w-full bg-slate-700 border border-slate-600 form-input input-focus-effect text-white placeholder-slate-400"
+                  placeholder="Doe"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="input-group">
+              <span class="input-label">Email Address*</span>
+              <div class="relative">
+                <div
+                  class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+                >
+                  <i class="fas fa-envelope text-slate-400"></i>
+                </div>
+                <input
+                  type="email"
+                  id="email"
+                  class="w-full bg-slate-700 border border-slate-600 pl-10 form-input input-focus-effect text-white placeholder-slate-400"
+                  placeholder="john.doe@example.com"
+                  required
+                />
+              </div>
+              <p id="emailError" class="text-sm text-red-400 mt-1 hidden">
+                Please enter a valid email address
+              </p>
+            </div>
+
+            <!-- Address -->
+            <div class="input-group">
+              <span class="input-label">Address*</span>
+              <div class="relative">
+                <div
+                  class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
+                >
+                  <i class="fas fa-map-marker-alt text-slate-400"></i>
+                </div>
+                <input
+                  type="text"
+                  id="address"
+                  class="w-full bg-slate-700 border border-slate-600 pl-10 form-input input-focus-effect text-white placeholder-slate-400"
+                  placeholder="123 Main St, City"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Phone with Country Code -->
+            <div class="input-group">
+              <span class="input-label">Phone Number*</span>
+              <div class="flex gap-3">
+                <div class="custom-select">
+                  <select
+                    id="countryCode"
+                    class="w-full bg-slate-700 border border-slate-600 form-input input-focus-effect text-white"
+                  >
+                    <!-- Options will be populated by JavaScript -->
+                  </select>
+                </div>
+                <input
+                  type="tel"
+                  id="phone"
+                  class="flex-1 bg-slate-700 border border-slate-600 form-input input-focus-effect text-white placeholder-slate-400"
+                  placeholder="1234567890"
+                  required
+                />
+              </div>
+              <p id="phoneError" class="text-sm text-red-400 mt-1 hidden">
+                Please enter a valid phone number (at least 4 digits)
+              </p>
+            </div>
+
+            <!-- Submit Button -->
+            <button
+              type="submit"
+              class="w-full bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-700 hover:to-purple-600 text-white font-medium py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-800 text-lg shadow-lg mt-8"
+            >
+              <i class="fas fa-rocket mr-2"></i> Launch Your Account
+            </button>
+
+            <!-- Already Registered -->
+            <div class="text-center pt-4">
+              <button
+                type="button"
+                id="alreadyRegistered"
+                class="text-purple-400 hover:text-purple-300 text-sm font-medium focus:outline-none transition-colors"
+              >
+                <i class="fas fa-sign-in-alt mr-1"></i> Already registered? Sign
+                in instead
+              </button>
+            </div>
+          </form>
+
+          <!-- Success Message -->
+          <div
+            id="successMessage"
+            class="success-message mt-6 p-4 bg-slate-700 rounded-lg border border-green-500/30"
+          >
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <i class="fas fa-check-circle text-green-400 text-2xl"></i>
+              </div>
+              <div class="ml-3">
+                <h3 class="text-sm font-medium text-green-400">
+                  Registration Successful!
+                </h3>
+                <div class="mt-1 text-sm text-slate-300">
+                  <p>Your account has been created successfully.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Registration Data Display -->
+          <div
+            id="registrationData"
+            class="mt-6 p-4 bg-slate-700/50 rounded-lg border border-slate-600 hidden"
+          >
+            <h4 class="text-sm font-medium text-slate-300 mb-2">
+              Registration Details:
+            </h4>
+            <pre class="text-xs text-slate-300 overflow-auto max-h-40"></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("registrationForm");
+        const emailInput = document.getElementById("email");
+        const phoneInput = document.getElementById("phone");
+        const addressInput = document.getElementById("address");
+        const countryCodeSelect = document.getElementById("countryCode");
+        const emailError = document.getElementById("emailError");
+        const phoneError = document.getElementById("phoneError");
+        const alreadyRegisteredBtn =
+          document.getElementById("alreadyRegistered");
+        const successMessage = document.getElementById("successMessage");
+        const registrationData = document.getElementById("registrationData");
+        const registrationDataContent = registrationData.querySelector("pre");
+
+        // Country code data
+        const countryData = [
+          { code: "US", name: "United States", dialCode: "+1", flag: "🇺🇸" },
+          { code: "GB", name: "United Kingdom", dialCode: "+44", flag: "🇬🇧" },
+          { code: "BD", name: "Bangladesh", dialCode: "+880", flag: "🇧🇩" },
+          { code: "IN", name: "India", dialCode: "+91", flag: "🇮🇳" },
+          { code: "CA", name: "Canada", dialCode: "+1", flag: "🇨🇦" },
+          { code: "AU", name: "Australia", dialCode: "+61", flag: "🇦🇺" },
+          { code: "DE", name: "Germany", dialCode: "+49", flag: "🇩🇪" },
+          { code: "FR", name: "France", dialCode: "+33", flag: "🇫🇷" },
+          { code: "JP", name: "Japan", dialCode: "+81", flag: "🇯🇵" },
+          { code: "SG", name: "Singapore", dialCode: "+65", flag: "🇸🇬" },
+        ];
+
+        // Populate country codes
+        function populateCountryCodes() {
+          // Clear existing options
+          countryCodeSelect.innerHTML = "";
+
+          // Add options for each country
+          countryData.forEach((country) => {
+            const option = document.createElement("option");
+            option.value = country.dialCode;
+            option.textContent = `${country.flag} ${country.name} (${country.dialCode})`;
+
+            // Set Bangladesh as default
+            if (country.code === "BD") {
+              option.selected = true;
+            }
+
+            countryCodeSelect.appendChild(option);
+          });
+        }
+
+        // Validate email
+        function validateEmail(email) {
+          // Comprehensive email regex that supports most valid formats
+          const re =
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          return re.test(String(email).toLowerCase());
+        }
+
+        // Validate phone number
+        function validatePhone(phone) {
+          // Basic validation - at least 4 digits
+          return /^\d{4,}$/.test(phone);
+        }
+
+        // Format registration data for display
+        function formatRegistrationData(data) {
+          return JSON.stringify(data, null, 2)
+            .replace(/"([^"]+)":/g, "$1:")
+            .replace(/[{}",]/g, "");
+        }
+
+        // Form submission
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Reset errors and messages
+          emailError.classList.add("hidden");
+          phoneError.classList.add("hidden");
+          successMessage.classList.remove("show");
+          registrationData.classList.add("hidden");
+
+          let isValid = true;
+
+          // Validate email
+          if (!validateEmail(emailInput.value)) {
+            emailError.classList.remove("hidden");
+            emailInput.focus();
+            isValid = false;
+          }
+
+          // Validate phone
+          if (!validatePhone(phoneInput.value)) {
+            phoneError.classList.remove("hidden");
+            phoneInput.focus();
+            isValid = false;
+          }
+
+          // If form is valid
+          if (isValid) {
+            // Get form values
+            const formData = {
+              "First Name": document.getElementById("firstName").value,
+              "Middle Name":
+                document.getElementById("middleName").value || "N/A",
+              "Last Name": document.getElementById("lastName").value,
+              Email: emailInput.value,
+              Address: addressInput.value,
+              Phone: `${countryCodeSelect.value}${phoneInput.value}`,
+              "Registered At": new Date().toLocaleString(),
+            };
+
+            // Log to console with nice formatting
+            console.log(
+              "%cRegistration Successful!",
+              "color: #10b981; font-size: 16px; font-weight: bold;"
+            );
+            console.log(
+              "%cRegistration Details:",
+              "color: #8b5cf6; font-weight: bold;"
+            );
+            console.table(formData);
+
+            // Show success message
+            successMessage.classList.add("show");
+
+            // Display formatted registration data
+            registrationDataContent.textContent =
+              formatRegistrationData(formData);
+            registrationData.classList.remove("hidden");
+
+            // Reset form after 5 seconds
+            setTimeout(() => {
+              form.reset();
+              successMessage.classList.remove("show");
+              registrationData.classList.add("hidden");
+            }, 5000);
+          }
+        });
+
+        // Already registered button
+        alreadyRegisteredBtn.addEventListener("click", function () {
+          console.log(
+            "%cYou don't need to register",
+            "color: #f59e0b; font-weight: bold;"
+          );
+          console.log("%cRedirecting to login page...", "color: #94a3b8;");
+          alert("You're already registered! Redirecting to login...");
+        });
+
+        // Initialize country codes
+        populateCountryCodes();
+      });
+    </script>
+  </body>
+</html>
