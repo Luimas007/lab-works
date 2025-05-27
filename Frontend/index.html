@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lost and Found Bulletin | Home</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+  </head>
+  <body class="bg-light">
+    <header class="bg-primary text-white py-3">
+      <div class="container">
+        <h1 class="mb-0">
+          <a href="index.html" class="text-white text-decoration-none"
+            >Lost and Found Bulletin</a
+          >
+        </h1>
+      </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="register.html">Register</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search items..."
+            />
+            <button class="btn btn-outline-light" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container my-5">
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="card shadow-sm h-100">
+            <div class="card-header bg-danger text-white">
+              <h5 class="mb-0">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>Lost Items
+              </h5>
+            </div>
+            <div class="card-body">
+              <h2 class="display-4 text-center">47</h2>
+              <p class="text-muted text-center">
+                Items reported lost this month
+              </p>
+              <div class="d-grid">
+                <a href="login.html" class="btn btn-outline-danger"
+                  >Report Lost Item</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <div class="card shadow-sm h-100">
+            <div class="card-header bg-success text-white">
+              <h5 class="mb-0">
+                <i class="bi bi-check-circle-fill me-2"></i>Found Items
+              </h5>
+            </div>
+            <div class="card-body">
+              <h2 class="display-4 text-center">32</h2>
+              <p class="text-muted text-center">Items found this month</p>
+              <div class="d-grid">
+                <a href="login.html" class="btn btn-outline-success"
+                  >Report Found Item</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+          <div class="card shadow-sm h-100">
+            <div class="card-header bg-info text-white">
+              <h5 class="mb-0">
+                <i class="bi bi-hand-thumbs-up-fill me-2"></i>Claimed Items
+              </h5>
+            </div>
+            <div class="card-body">
+              <h2 class="display-4 text-center">28</h2>
+              <p class="text-muted text-center">Items claimed this month</p>
+              <div class="d-grid">
+                <a href="login.html" class="btn btn-outline-info"
+                  >Claim an Item</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6 mb-4">
+          <div class="card shadow-sm">
+            <div class="card-header bg-warning">
+              <h5 class="mb-0">
+                <i class="bi bi-clock-history me-2"></i>Recent Lost Items
+              </h5>
+            </div>
+            <div class="card-body">
+              <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">Black Wallet</h6>
+                    <small>2 hours ago</small>
+                  </div>
+                  <p class="mb-1">
+                    Lost near the cafeteria. Contains ID and credit cards.
+                  </p>
+                  <small>Reported by: John Doe</small>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">MacBook Pro</h6>
+                    <small>5 hours ago</small>
+                  </div>
+                  <p class="mb-1">
+                    Left in Computer Lab 302. Space gray, 13-inch.
+                  </p>
+                  <small>Reported by: Sarah Smith</small>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">Student ID Card</h6>
+                    <small>1 day ago</small>
+                  </div>
+                  <p class="mb-1">Lost near the library. ID: 2023-12345</p>
+                  <small>Reported by: Alex Johnson</small>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 mb-4">
+          <div class="card shadow-sm">
+            <div class="card-header bg-info text-white">
+              <h5 class="mb-0">
+                <i class="bi bi-chat-square-text-fill me-2"></i>Recent Comments
+              </h5>
+            </div>
+            <div class="card-body">
+              <div class="list-group">
+                <div class="list-group-item">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">Regarding the lost wallet</h6>
+                    <small>30 minutes ago</small>
+                  </div>
+                  <p class="mb-1">
+                    I think I saw someone pick it up near the cafeteria. Check
+                    with security.
+                  </p>
+                  <small>Posted by: Michael Brown</small>
+                </div>
+                <div class="list-group-item">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">About the MacBook</h6>
+                    <small>2 hours ago</small>
+                  </div>
+                  <p class="mb-1">
+                    The lab assistant might have kept it in the lost and found
+                    box.
+                  </p>
+                  <small>Posted by: Lab Technician</small>
+                </div>
+                <div class="list-group-item">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">ID Card found</h6>
+                    <small>5 hours ago</small>
+                  </div>
+                  <p class="mb-1">
+                    I found an ID card near the library entrance. Please contact
+                    me.
+                  </p>
+                  <small>Posted by: Emma Wilson</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h5>About Lost and Found Bulletin</h5>
+            <p>
+              A platform for university students to report and claim lost items,
+              making campus life easier.
+            </p>
+          </div>
+          <div class="col-md-3">
+            <h5>Quick Links</h5>
+            <ul class="list-unstyled">
+              <li><a href="index.html" class="text-white">Home</a></li>
+              <li><a href="login.html" class="text-white">Login</a></li>
+              <li><a href="register.html" class="text-white">Register</a></li>
+              <li>
+                <a href="forgot-password.html" class="text-white"
+                  >Forgot Password</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h5>Contact</h5>
+            <address>
+              University Campus<br />
+              Admin Building, Room 101<br />
+              Email: lostandfound@university.edu
+            </address>
+          </div>
+        </div>
+        <hr />
+        <div class="text-center">
+          <p class="mb-0">
+            Copyright © Mortal_Legion, 2025. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
